@@ -7,5 +7,5 @@ before_install:
 - sudo a2enmod headers
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
 - sudo service apache2 restart
-- npm install headless-chrome-crawler
+- npm install -g headless-chrome-crawler
 script: node --version && chmod +x build.sh && ./build.sh
