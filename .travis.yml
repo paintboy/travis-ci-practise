@@ -2,8 +2,9 @@ language: php
 php:
   - 7.1.9
 before_install:
-- sudo apt install ruby-rack
+- sudo apt install apache2
+- sudo a2enmod headers
+- sudo echo "Listen 8080" > /etc/apache2/ports.conf
+- sudo service apache2 restart
 - npm install headless-chrome-crawler
-before_script:
-- rackup -p 8080
-script: chmod +x build.sh && ./build.sh
+script: node --version && chmod +x build.sh && ./build.sh
