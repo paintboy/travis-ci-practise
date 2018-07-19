@@ -3,4 +3,6 @@ php:
   - 7.1.9
 before_install:
 - npm install headless-chrome-crawler
+before_script:
+- rackup -p 8080
 script: chmod +x build.sh && ./build.sh
