@@ -3,7 +3,7 @@ php:
   - 7.1.9
 before_install:
 - sudo apt update
-- sudo apt install libapache2-mod-php npm
+- sudo apt-cache search libapache2-mod-
 - sudo a2enmod headers
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
 - sudo service apache2 restart
