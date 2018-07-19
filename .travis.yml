@@ -1,4 +1,6 @@
 language: php
 php:
   - 7.1.9
+before_install:
+- npm install headless-chrome-crawl
 script: chmod +x build.sh && ./build.sh
