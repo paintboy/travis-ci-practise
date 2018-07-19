@@ -2,6 +2,7 @@ language: php
 php:
   - 7.1.9
 before_install:
+- sudo apt update
 - sudo apt install apache2
 - sudo a2enmod headers
 - sudo echo "Listen 8080" > /etc/apache2/ports.conf
