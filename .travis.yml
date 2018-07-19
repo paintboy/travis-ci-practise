@@ -3,9 +3,11 @@ php:
   - 7.1.9
 before_install:
 - sudo apt update
-- sudo apt-cache search libapache2-mod-
-- sudo a2enmod headers
+- sudo apt install apache2 npm
+- sudo a2enmod headers proxy_http
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
+- printf "ProxyPass \"/\" \"http://localhost:8081\"\nProxyPassReverse \"/\" \"http://localhost:8081\"\nHeader always set: `cat csp.txt`" | sudo tee /etc/apache2/conf-available/csp.conf
+- sudo a2enconf csp.conf
 - sudo service apache2 restart
 - sudo npm install -g headless-chrome-crawler
 script: node --version && chmod +x build.sh && ./build.sh
