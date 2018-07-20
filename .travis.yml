@@ -5,8 +5,10 @@ before_install:
 - sudo apt update
 - sudo apt install --only-upgrade ca-certificates
 - sudo apt install apache2 npm nodejs-legacy
-#- sudo rm /usr/bin/node
-#- sudo ln -s /usr/bin/nodejs /usr/bin/node
+- which node
+- which nodejs
+- sudo rm /usr/bin/node
+- sudo ln -s /usr/bin/nodejs /usr/bin/node
 - sudo a2enmod headers proxy_http
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
 - printf "ProxyPass \"/\" \"http://localhost:8081\"\nProxyPassReverse \"/\" \"http://localhost:8081\"" | sudo tee /etc/apache2/conf-available/csp.conf
