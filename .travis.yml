@@ -11,7 +11,7 @@ before_install:
 - cat csp.conf | sudo tee -a /etc/apache2/conf-available/csp.conf
 - sudo a2enconf csp.conf
 - sudo service apache2 restart
-- node -v
+- nodejs -v
 - sudo npm config set ca null
 - sudo npm install -g headless-chrome-crawler
 script: chmod +x build.sh && ./build.sh
