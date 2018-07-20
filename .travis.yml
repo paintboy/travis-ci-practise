@@ -4,7 +4,7 @@ php:
 before_install:
 - node -v
 - sudo apt update
-- sudo apt upgrade nodejs
+- sudo apt install --only-upgrade nodejs
 - sudo apt install apache2 npm
 - sudo a2enmod headers proxy_http
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
