@@ -3,6 +3,7 @@ php:
   - 7.1.9
 before_install:
 - sudo apt update
+- sudo apt dist-upgrade ca-certificates
 - sudo apt install apache2 npm
 - sudo a2enmod headers proxy_http
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
