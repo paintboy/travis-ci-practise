@@ -2,9 +2,8 @@ language: php
 php:
   - 7.1.9
 before_install:
-- node -v
 - sudo apt update
-- sudo apt install --only-upgrade nodejs
+- sudo apt install --only-upgrade ca-certificates
 - sudo apt install apache2 npm
 - sudo a2enmod headers proxy_http
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
@@ -12,5 +11,6 @@ before_install:
 - cat csp.conf | sudo tee -a /etc/apache2/conf-available/csp.conf
 - sudo a2enconf csp.conf
 - sudo service apache2 restart
+- sudo node -v
 - sudo npm install -g headless-chrome-crawler
 script: node --version && chmod +x build.sh && ./build.sh
