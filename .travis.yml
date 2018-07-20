@@ -21,6 +21,6 @@ before_install:
 - nodejs -v
 - node -v
 - sudo npm config set ca null
-- yarn add headless-chrome-crawler
+- yarn --ignore-engines add headless-chrome-crawler
 #- sudo npm install -g headless-chrome-crawler
 script: chmod +x build.sh && ./build.sh
