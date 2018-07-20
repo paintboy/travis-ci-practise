@@ -2,6 +2,7 @@ language: php
 php:
   - 7.1.9
 before_install:
+- node -v
 - sudo apt update
 - sudo apt install apache2 npm
 - sudo a2enmod headers proxy_http
