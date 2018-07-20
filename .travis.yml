@@ -4,7 +4,7 @@ php:
 before_install:
 - sudo apt update
 - sudo apt install --only-upgrade ca-certificates
-- sudo apt install apache2 npm
+- sudo apt install apache2 npm nodejs-legacy
 - sudo a2enmod headers proxy_http
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
 - printf "ProxyPass \"/\" \"http://localhost:8081\"\nProxyPassReverse \"/\" \"http://localhost:8081\"" | sudo tee /etc/apache2/conf-available/csp.conf
@@ -12,7 +12,6 @@ before_install:
 - sudo a2enconf csp.conf
 - sudo service apache2 restart
 - node -v
-- sudo npm config get ca
 - sudo npm config set ca null
 - sudo npm install -g headless-chrome-crawler
 script: chmod +x build.sh && ./build.sh
