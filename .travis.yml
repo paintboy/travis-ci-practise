@@ -1,6 +1,8 @@
 language: php
 php:
   - 7.1.9
+node_js:
+ - node
 before_install:
 - node -v
 - sudo apt update
