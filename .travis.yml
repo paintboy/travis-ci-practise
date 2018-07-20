@@ -5,6 +5,7 @@ before_install:
 - sudo apt update
 - sudo apt install --only-upgrade ca-certificates
 - sudo apt install apache2 npm nodejs-legacy
+- sudo rm /usr/bin/node
 - sudo ln -s /usr/bin/nodejs /usr/bin/node
 - sudo a2enmod headers proxy_http
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
