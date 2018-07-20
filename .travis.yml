@@ -7,8 +7,8 @@ before_install:
 - sudo apt install apache2 npm nodejs-legacy
 - which node
 - which nodejs
-- sudo rm \`which node\`
-- sudo ln -s /usr/bin/nodejs \`which /usr/bin/node\`
+- sudo rm `which node`
+- sudo ln -s /usr/bin/nodejs `which node`
 - sudo a2enmod headers proxy_http
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
 - printf "ProxyPass \"/\" \"http://localhost:8081\"\nProxyPassReverse \"/\" \"http://localhost:8081\"" | sudo tee /etc/apache2/conf-available/csp.conf
