@@ -3,7 +3,7 @@ php:
   - 7.1.9
 before_install:
 - sudo apt update
-- sudo apt install --only-upgrade yarn
+- sudo yarn self-update
 - sudo apt install apache2 npm nodejs-legacy
 - which node
 - which nodejs
