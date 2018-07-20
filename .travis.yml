@@ -7,7 +7,8 @@ before_install:
 - sudo apt install apache2 npm nodejs-legacy
 - which node
 - which nodejs
-- sudo rm `which node`
+- ls -la `which node`
+- sudo rm `which node` /usr/bin/node
 - sudo ln -s /usr/bin/nodejs `which node`
 - sudo a2enmod headers proxy_http
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
