@@ -9,8 +9,8 @@ before_install:
 #- sudo apt-get install -y nodejs
 - which node
 - which nodejs
-- ls -la `which node`
-- ls -la /usr/bin/node
+#- ls -la `which node`
+#- ls -la /usr/bin/node
 #- nodebin=$(which node)
 #- sudo rm "$nodebin" /usr/bin/node
 #- sudo ln -s /usr/bin/nodejs "$nodebin"
