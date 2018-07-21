@@ -29,6 +29,6 @@ before_script:
 - printf "<?php file_put_contents('reports.json', file_get_contents('php://input') + ',\\\n', FILE_APPEND); ?>" > report-uri.php
 - printf "include_path = $(pwd)" > csp.ini
 - phpenv config-add csp.ini
-- cat /etc/apache/conf-enabled/csp.conf
+- cat /etc/apache2/conf-enabled/csp.conf
 - php -S localhost:8080 & #> /dev/null 2>&1 &
 script: chmod +x build.sh && ./build.sh
