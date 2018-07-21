@@ -2,7 +2,7 @@ const HCCrawler = require('headless-chrome-crawler');
 const CSVExporter = require('headless-chrome-crawler/exporter/csv');
 
 const exporter = new CSVExporter({
-    file: 'result.csv',
+    file: 'crawled.csv',
     fields: ['response.url', 'response.status', 'links.length'],
 });
 
