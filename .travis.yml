@@ -31,7 +31,7 @@ before_script:
 - phpenv config-add csp.ini
 - cat /etc/apache2/conf-enabled/csp.conf
 - php -S localhost:8080 & #> /dev/null 2>&1 &
-- sleep 3
+#- sleep 3
 - curl localhost
 - curl localhost/info/
 script: chmod +x build.sh && ./build.sh
