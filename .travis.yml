@@ -3,7 +3,7 @@ php:
   - 7.2
 before_install:
 - sudo apt update
-- sudo apt install apache2 #nodejs
+- sudo apt install apache2
 - yarn add --ignore-engines headless-chrome-crawler
 - sudo a2enmod headers proxy_http
 - printf "ProxyPass \"/\" \"http://localhost:8080/\"\nProxyPassReverse \"/\" \"http://localhost:8080/\"\n" | sudo tee /etc/apache2/conf-available/csp.conf
@@ -14,6 +14,6 @@ before_script:
 - printf "<?php file_put_contents('csp-reports.json', json_encode(json_decode(file_get_contents('php://input')), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . \"\\\\n\\\\n\", FILE_APPEND) ?>" > report-uri.php
 - printf "include_path = $(pwd)" > csp.ini
 - phpenv config-add csp.ini
-- php -S localhost:8080 & #> /dev/null 2>&1 &
+- php -S localhost:8080 > /dev/null 2>&1 &
 - sleep 3
 script: chmod +x build.sh && ./build.sh
