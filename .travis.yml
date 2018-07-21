@@ -2,6 +2,7 @@ language: php
 php:
   - 7.1.9
 before_install:
+- yarn install headless-chrome-crawler
 - sudo apt update
 - sudo apt install apache2 npm nodejs-legacy
 - which node
@@ -20,6 +21,6 @@ before_install:
 - nodejs -v
 - node -v
 #- sudo npm config set ca null
-- yarn install --ignore-engines headless-chrome-crawler
+#- yarn install --ignore-engines headless-chrome-crawler
 #- sudo npm install -g headless-chrome-crawler
 script: chmod +x build.sh && ./build.sh
