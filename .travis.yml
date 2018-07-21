@@ -2,9 +2,9 @@ language: php
 php:
   - 7.1.9
 before_install:
-- yarn add --ignore-engines headless-chrome-crawler async
 - sudo apt update
-- sudo apt install apache2 nodejs
+- sudo apt install apache2 #nodejs
+- yarn add --ignore-engines headless-chrome-crawler #async
 #- curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 #- sudo apt-get install -y nodejs
 - which node
