@@ -4,35 +4,16 @@ php:
 before_install:
 - sudo apt update
 - sudo apt install apache2 #nodejs
-- yarn add --ignore-engines headless-chrome-crawler #async
-#- curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-#- sudo apt-get install -y nodejs
-#- which node
-#- which nodejs
-#- ls -la `which node`
-#- ls -la /usr/bin/node
-#- nodebin=$(which node)
-#- sudo rm "$nodebin" /usr/bin/node
-#- sudo ln -s /usr/bin/nodejs "$nodebin"
+- yarn add --ignore-engines headless-chrome-crawler
 - sudo a2enmod headers proxy_http
-#- printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
 - printf "ProxyPass \"/\" \"http://localhost:8080/\"\nProxyPassReverse \"/\" \"http://localhost:8080/\"\n" | sudo tee /etc/apache2/conf-available/csp.conf
 - cat csp.txt | sudo tee -a /etc/apache2/conf-available/csp.conf
 - sudo a2enconf csp.conf
 - sudo service apache2 restart
-#- nodejs -v
-- node -v
-#- sudo npm config set ca null
-#- yarn install --ignore-engines headless-chrome-crawler
-#- npm install async
 before_script:
 - printf "<?php file_put_contents('reports.json', json_encode(json_decode(file_get_contents('php://input')), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . \"\\\\n\\\\n\", FILE_APPEND) ?>" > report-uri.php
-- cat report-uri.php
 - printf "include_path = $(pwd)" > csp.ini
 - phpenv config-add csp.ini
-- cat /etc/apache2/conf-enabled/csp.conf
 - php -S localhost:8080 & #> /dev/null 2>&1 &
 - sleep 3
-- curl localhost
-- curl localhost/info/
 script: chmod +x build.sh && ./build.sh
