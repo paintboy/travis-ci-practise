@@ -28,5 +28,5 @@ before_install:
 before_script:
 - printf "include_path = $(pwd)" > csp.ini
 - phpenv config-add csp.ini
-- php -S localhost:8080
+- php -S localhost:8080 &
 script: chmod +x build.sh && ./build.sh
