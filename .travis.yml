@@ -11,9 +11,9 @@ before_install:
 - which nodejs
 - ls -la `which node`
 - ls -la /usr/bin/node
-- nodebin=$(which node)
-- sudo rm "$nodebin" /usr/bin/node
-- sudo ln -s /usr/bin/nodejs "$nodebin"
+#- nodebin=$(which node)
+#- sudo rm "$nodebin" /usr/bin/node
+#- sudo ln -s /usr/bin/nodejs "$nodebin"
 - sudo a2enmod headers proxy_http
 - printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
 - printf "ProxyPass \"/\" \"http://localhost:8081\"\nProxyPassReverse \"/\" \"http://localhost:8081\"" | sudo tee /etc/apache2/conf-available/csp.conf
