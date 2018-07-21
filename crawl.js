@@ -2,7 +2,7 @@ const HCCrawler = require('headless-chrome-crawler');
 
 (async () => {
   const crawler = await HCCrawler.launch({
-    maxDepth: 20,
+    maxDepth: 1,
   });
   await crawler.queue('http://localhost:8080');
   await crawler.onIdle();
