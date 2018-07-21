@@ -13,7 +13,7 @@ const exporter = new CSVExporter({
         allowedDomains: ['localhost', 'top'],
         exporter
     });
-    await crawler.queue({ url: 'http://localhost:8080/' });
+    await crawler.queue({ url: 'http://localhost/' });
     await crawler.onIdle();
     console.log("Crawler Done")
     await crawler.close();
