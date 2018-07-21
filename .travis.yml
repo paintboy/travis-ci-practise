@@ -30,7 +30,7 @@ before_script:
 - printf "include_path = $(pwd)" > csp.ini
 - phpenv config-add csp.ini
 - cat /etc/apache2/conf-enabled/csp.conf
+- php -S localhost:8080 & #> /dev/null 2>&1 &
 - curl localhost
 - curl localhost/info/
-- php -S localhost:8080 & #> /dev/null 2>&1 &
 script: chmod +x build.sh && ./build.sh
