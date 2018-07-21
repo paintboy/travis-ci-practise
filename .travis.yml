@@ -26,6 +26,8 @@ before_install:
 #- yarn install --ignore-engines headless-chrome-crawler
 #- npm install async
 before_script:
-- printf "include_path = $(pwd)" | sudo tee /etc/php/7.2/cli/conf.d/csp.ini
+- ls -la
+- ls -la php
+#- printf "include_path = $(pwd)" | sudo tee /etc/php/7.2/cli/conf.d/csp.ini
 - php -S localhost:8080
 script: chmod +x build.sh && ./build.sh
