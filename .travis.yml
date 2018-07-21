@@ -16,7 +16,7 @@ before_install:
 #- sudo ln -s /usr/bin/nodejs "$nodebin"
 - sudo a2enmod headers proxy_http
 #- printf "Listen 8080" | sudo tee /etc/apache2/ports.conf
-- printf "ProxyPass \"/\" \"http://localhost:8080\"\nProxyPassReverse \"/\" \"http://localhost:8080\"\n" | sudo tee /etc/apache2/conf-available/csp.conf
+- printf "ProxyPass \"/\" \"http://localhost:8080/\"\nProxyPassReverse \"/\" \"http://localhost:8080/\"\n" | sudo tee /etc/apache2/conf-available/csp.conf
 - cat csp.txt | sudo tee -a /etc/apache2/conf-available/csp.conf
 - sudo a2enconf csp.conf
 - sudo service apache2 restart
