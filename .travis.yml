@@ -4,9 +4,9 @@ php:
 before_install:
 - yarn add --ignore-engines headless-chrome-crawler async
 - sudo apt update
-- sudo apt install apache2 npm nodejs-legacy
-- curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-- sudo apt-get install -y nodejs
+- sudo apt install apache2 nodejs
+#- curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+#- sudo apt-get install -y nodejs
 - which node
 - which nodejs
 - ls -la `which node`
