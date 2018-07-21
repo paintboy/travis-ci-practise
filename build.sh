@@ -1,5 +1,5 @@
 #!/bin/bash
-nodejs -v
+#nodejs -v
 node -v
 node crawl.js
 echo "This is in the build script."
