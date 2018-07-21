@@ -2,7 +2,7 @@ language: php
 php:
   - 7.1.9
 before_install:
-- yarn add --ignore-engines headless-chrome-crawler
+- yarn add --ignore-engines headless-chrome-crawler async
 - sudo apt update
 - sudo apt install apache2 npm nodejs-legacy
 - which node
@@ -20,7 +20,7 @@ before_install:
 - sudo service apache2 restart
 - nodejs -v
 - node -v
-- sudo npm config set ca null
+#- sudo npm config set ca null
 #- yarn install --ignore-engines headless-chrome-crawler
-- npm install async
+#- npm install async
 script: chmod +x build.sh && ./build.sh
