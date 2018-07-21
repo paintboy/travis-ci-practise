@@ -1,0 +1,1 @@
+Header always set Content-Security-Policy: "default-src 'none'; report-uri http://localhost/report-uri.php"
