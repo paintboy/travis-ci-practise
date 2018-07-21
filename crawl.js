@@ -1,13 +1,20 @@
 const HCCrawler = require('headless-chrome-crawler');
+const CSVExporter = require('headless-chrome-crawler/exporter/csv');
+
+const exporter = new CSVExporter({
+    file: 'result.csv',
+    fields: ['response.url', 'response.status', 'links.length'],
+});
 
 (async () => {
     const crawler = await HCCrawler.launch({
         maxDepth: 4,
         jQuery: false,
-        allowedDomains: ['127.0.0.1', 'top']
+        allowedDomains: ['localhost', 'top'],
+        exporter
     });
-    await crawler.queue({ url: 'http://localhost/' });
+    await crawler.queue({ url: 'http://localhost:8080/' });
     await crawler.onIdle();
-    console.log("Hello");
+    console.log("Crawler Done")
     await crawler.close();
 })();
