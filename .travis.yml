@@ -2,7 +2,7 @@ language: php
 php:
   - 7.1.9
 before_install:
-- yarn install headless-chrome-crawler
+- yarn add headless-chrome-crawler
 - sudo apt update
 - sudo apt install apache2 npm nodejs-legacy
 - which node
