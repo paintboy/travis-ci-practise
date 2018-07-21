@@ -11,7 +11,7 @@ before_install:
 - sudo a2enconf csp.conf
 - sudo service apache2 restart
 before_script:
-- printf "<?php file_put_contents('reports.json', json_encode(json_decode(file_get_contents('php://input')), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . \"\\\\n\\\\n\", FILE_APPEND) ?>" > report-uri.php
+- printf "<?php file_put_contents('csp-reports.json', json_encode(json_decode(file_get_contents('php://input')), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . \"\\\\n\\\\n\", FILE_APPEND) ?>" > report-uri.php
 - printf "include_path = $(pwd)" > csp.ini
 - phpenv config-add csp.ini
 - php -S localhost:8080 & #> /dev/null 2>&1 &
