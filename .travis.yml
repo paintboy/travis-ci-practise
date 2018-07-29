@@ -1,10 +1,8 @@
 language: php
 php:
   - 7.2
-addons:
-  hosts:
-    - build${TRAVIS_BUILD_NUMBER}.example.tld
 before_install:
+- printf "127.0.0.1 build${TRAVIS_BUILD_NUMBER}.example.tld" | sudo tee -a /etc/hosts
 - cat /etc/hosts
 - ping -c 5 build${TRAVIS_BUILD_NUMBER}.example.tld
 - sudo apt update
