@@ -2,9 +2,9 @@ language: php
 php:
   - 7.2
 before_install:
-- printf "\n127.0.0.1 xypdkesxbk.dev" | sudo tee -a /etc/hosts
+- printf "\n127.0.0.1 xypdkesxbk.tld" | sudo tee -a /etc/hosts
 - cat /etc/hosts
-- ping -c 5 xypdkesxbk.dev
+- ping -c 5 xypdkesxbk.tld
 - sudo apt update
 - sudo apt install apache2
 - yarn add --ignore-engines headless-chrome-crawler
