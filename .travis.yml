@@ -5,6 +5,7 @@ addons:
   hosts:
     - build${TRAVIS_BUILD_NUMBER}.example.tld
 before_install:
+- ping -c 5 build${TRAVIS_BUILD_NUMBER}.example.tld
 - sudo apt update
 - sudo apt install apache2
 - yarn add --ignore-engines headless-chrome-crawler
