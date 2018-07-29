@@ -5,10 +5,14 @@ before_install:
 - printf "\n127.0.0.1 xypdkesxbk.dev" | sudo tee -a /etc/hosts
 - cat /etc/hosts
 - ping -c 5 xypdkesxbk.dev
+
+- printf '\n[SAN]\nsubjectAltName=DNS:xypdkesxbk.dev' | sudo tee -a /etc/ssl/openssl.cnf
+- openssl req -newkey rsa:2048 -x509 -nodes -keyout server.key -new -out server.crt -subj /CN=xypdkesxbk.dev -reqexts SAN -extensions SAN -config /etc/ssl/openssl.cnf -sha256 -days 3650
+
 - sudo apt update
 - sudo apt install apache2
 - yarn add --ignore-engines headless-chrome-crawler
-- sudo a2enmod headers proxy_http
+- sudo a2enmod headers proxy_http ssl
 - printf "ProxyPass \"/\" \"http://localhost:8080/\"\nProxyPassReverse \"/\" \"http://localhost:8080/\"\n" | sudo tee /etc/apache2/conf-available/csp.conf
 - cat csp.txt | sudo tee -a /etc/apache2/conf-available/csp.conf
 - sudo a2enconf csp.conf
