@@ -1,2 +1,2 @@
 <img src="/image.png">
-<a href="/info/">
+<a href="/info/">Info</a>
