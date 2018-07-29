@@ -2,20 +2,28 @@ language: php
 php:
   - 7.2
 before_install:
+
 - printf "\n127.0.0.1 xypdkesxbk.dev" | sudo tee -a /etc/hosts
 - cat /etc/hosts
 - ping -c 5 xypdkesxbk.dev
 
 - printf '\n[SAN]\nsubjectAltName=DNS:xypdkesxbk.dev' | sudo tee -a /etc/ssl/openssl.cnf
 - openssl req -newkey rsa:2048 -x509 -nodes -keyout server.key -new -out server.crt -subj /CN=xypdkesxbk.dev -reqexts SAN -extensions SAN -config /etc/ssl/openssl.cnf -sha256 -days 3650
+- certutil -d sql:$HOME/.pki/nssdb -A -t "P,," -n server.crt -i server.crt
+- sudo mv server.crt /etc/ssl/certs/
+- sudo mv server.key /etc/ssl/private/
+
+- printf "<VirtualHost _default_:443>\nSSLEngine on\nSSLCertificateFile /etc/ssl/certs/server.crt\nSSLCertificateKeyFile /etc/ssl/private/server.key\n</VirtualHost>" | sudo tee /etc/apache2/sites-available/tls.conf
 
 - sudo apt update
-- sudo apt install apache2
+- sudo apt install apache2 libnss3-tools
 - yarn add --ignore-engines headless-chrome-crawler
 - sudo a2enmod headers proxy_http ssl
 - printf "ProxyPass \"/\" \"http://localhost:8080/\"\nProxyPassReverse \"/\" \"http://localhost:8080/\"\n" | sudo tee /etc/apache2/conf-available/csp.conf
 - cat csp.txt | sudo tee -a /etc/apache2/conf-available/csp.conf
 - sudo a2enconf csp.conf
+- sudo a2ensite tls.conf
+- sudo apachectl configtest
 - sudo service apache2 restart
 before_script:
 - touch blocked-uri-exclusions.txt document-uri-exclusions.txt
