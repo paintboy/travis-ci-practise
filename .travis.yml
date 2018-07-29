@@ -17,7 +17,9 @@ before_install:
 
 - printf '\n[SAN]\nsubjectAltName=DNS:xypdkesxbk.dev' | sudo tee -a /etc/ssl/openssl.cnf
 - openssl req -newkey rsa:2048 -x509 -nodes -keyout server.key -new -out server.crt -subj /CN=xypdkesxbk.dev -reqexts SAN -extensions SAN -config /etc/ssl/openssl.cnf -sha256 -days 3650
-- certutil -d sql:$HOME/.pki/nssdb -A -t "P,," -n server.crt -i server.crt
+- mkdir -p "$HOME"/.pki/nssdb
+- certutil -d "$HOME"/.pki/nssdb -N --empty-password
+- certutil -d sql:"$HOME"/.pki/nssdb -A -t "P,," -n server.crt -i server.crt
 - sudo mv server.crt /etc/ssl/certs/
 - sudo mv server.key /etc/ssl/private/
 
