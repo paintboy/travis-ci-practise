@@ -1,1 +1,1 @@
-Header always set Content-Security-Policy: "default-src 'none'; report-uri http://localhost/report-uri.php"
+Header always set Content-Security-Policy: "default-src 'none'; report-uri https://7hbgf4av90lpav43fs.report-uri.com/r/d/csp/enforce http://localhost/report-uri.php"
