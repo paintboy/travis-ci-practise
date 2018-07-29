@@ -13,10 +13,10 @@ const exporter = new CSVExporter({
     const crawler = await HCCrawler.launch({
         maxDepth: 4,
         jQuery: false,
-        allowedDomains: ['xypdkesxbk.dev'],
+        allowedDomains: [process.argv[2]],
         exporter
     });
-    await crawler.queue({ url: 'http://xypdkesxbk.dev/' });
+    await crawler.queue({ url: 'http://' + process.argv[2] + '/' });
     await crawler.onIdle();
     console.log("Crawler Done")
     await crawler.close();
