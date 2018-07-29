@@ -5,6 +5,7 @@ addons:
   hosts:
     - build${TRAVIS_BUILD_NUMBER}.example.tld
 before_install:
+- cat /etc/hosts
 - ping -c 5 build${TRAVIS_BUILD_NUMBER}.example.tld
 - sudo apt update
 - sudo apt install apache2
