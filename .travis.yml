@@ -1,6 +1,9 @@
 language: php
 php:
   - 7.2
+addons:
+  hosts:
+    - build${TRAVIS_BUILD_NUMBER}.example.tld
 before_install:
 - sudo apt update
 - sudo apt install apache2
